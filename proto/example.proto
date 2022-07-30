@@ -1,0 +1,20 @@
+syntax = "proto3";
+package examplepb;
+option go_package = "examplepb/";
+import "proto/version.proto";
+
+message Msg1 {
+  option (version_msg) = "3.0";
+  enum Enum1 {
+    option (version_enum) = "3.0";
+    E1 = 0;
+    E2 = 1;
+    E3 = 2 [ (version_enum_value) = "3.3" ];
+  }
+  bytes f1 = 1;
+  int64 f2 = 2;
+  Enum1 f3 = 3;
+  bool f4 = 4;
+  int64 f5 = 5 [ (version_field) = "3.1" ];
+  Enum1 f6 = 6 [ (version_field) = "3.2" ];
+}
