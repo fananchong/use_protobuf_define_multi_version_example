@@ -2,4 +2,10 @@ module use_protobuf_define_multi_version_example
 
 go 1.17
 
-require google.golang.org/protobuf v1.28.1
+require (
+	github.com/coreos/go-semver v0.3.0
+	github.com/golang/protobuf v1.5.0
+	google.golang.org/protobuf v1.28.1
+)
+
+require gopkg.in/yaml.v2 v2.4.0 // indirect
