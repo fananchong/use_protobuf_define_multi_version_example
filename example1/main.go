@@ -11,17 +11,22 @@ import (
 func main() {
 	{
 		msg := &examplepb.Msg1{}
-		fmt.Printf("%v\n", versionpb.MinimalVersion(msg))
+		fmt.Printf("%v\n", versionpb.MinimalVersion(msg.ProtoReflect()))
+	}
+
+	{
+		msg := &examplepb.Msg1{F5: 0}
+		fmt.Printf("%v\n", versionpb.MinimalVersion(msg.ProtoReflect()))
 	}
 
 	{
 		msg := &examplepb.Msg1{F6: examplepb.Msg1_E2}
-		fmt.Printf("%v\n", versionpb.MinimalVersion(msg))
+		fmt.Printf("%v\n", versionpb.MinimalVersion(msg.ProtoReflect()))
 	}
 
 	{
 		msg := &examplepb.Msg1{F6: examplepb.Msg1_E3}
-		fmt.Printf("%v\n", versionpb.MinimalVersion(msg))
+		fmt.Printf("%v\n", versionpb.MinimalVersion(msg.ProtoReflect()))
 	}
 
 	annotations, err := versionpb.AllVersionByFiles(protoregistry.GlobalFiles, []string{"google.protobuf"})

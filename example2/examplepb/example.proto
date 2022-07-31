@@ -1,0 +1,20 @@
+syntax = "proto2";
+package examplepb;
+option go_package = "./examplepb/;examplepb";
+import "github.com/fananchong/versionpb/version.proto";
+
+message Msg1 {
+  option (versionpb.version_msg) = "3.0";
+  enum Enum1 {
+    option (versionpb.version_enum) = "3.0";
+    E1 = 0;
+    E2 = 1;
+    E3 = 2 [ (versionpb.version_enum_value) = "3.3" ];
+  }
+  optional bytes f1 = 1;
+  optional int64 f2 = 2;
+  optional Enum1 f3 = 3;
+  optional bool f4 = 4;
+  optional int64 f5 = 5 [ (versionpb.version_field) = "3.1" ];
+  optional Enum1 f6 = 6 [ (versionpb.version_field) = "3.2" ];
+}
