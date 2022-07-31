@@ -1,8 +1,6 @@
 # use_protobuf_define_multi_version_example
 使用 protobuf 定义多版本的例子
 
-
-
 ## 依赖
 
 ```shell
@@ -41,3 +39,10 @@ message Msg1 {
   Enum1 f6 = 6 [ (versionpb.version_field) = "3.2" ];
 }
 ```
+
+## 例子介绍
+
+| 例子     | 协议版本 | 说明                                                           |
+| :------- | :------- | :------------------------------------------------------------- |
+| example1 | proto 3  | **注意， f5 字段赋值 0 ，被优化掉了。导致 3.1.0 版本没识别到** |
+| example2 | proto 2  | **正确识别 f5 字段的 3.1.0 版本**                              |

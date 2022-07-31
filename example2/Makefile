@@ -8,7 +8,7 @@ GOBIN := $(shell go env GOPATH)/bin
 
 proto:
 	go mod vendor
-	protoc -I=. -I=./vendor --gofast_out=Mgoogle/protobuf/timestamp.proto=github.com/gogo/protobuf/types,Mgoogle/protobuf/duration.proto=github.com/gogo/protobuf/types,Mgoogle/protobuf/empty.proto=github.com/gogo/protobuf/types,Mgoogle/api/annotations.proto=github.com/gogo/googleapis/google/api,Mgoogle/protobuf/field_mask.proto=github.com/gogo/protobuf/types,Mgoogle/protobuf/descriptor.proto=github.com/gogo/protobuf/protoc-gen-gogo/descriptor:. examplepb/*.proto
+	protoc -I=. -I=./vendor --go_out=. examplepb/*.proto
 	sed -i 's/_ "."//g' ./examplepb/*.pb.go
 	go fmt ./examplepb/*.pb.go
 
@@ -19,9 +19,5 @@ install_protoc:
 	curl -OL https://github.com/protocolbuffers/protobuf-go/releases/download/v${PROTOC_GEN_GO_VERSION}/${PROTOC_GEN_GO_VERSION_ZIP}
 	tar -zxvf ${PROTOC_GEN_GO_VERSION_ZIP} -C protoc/bin
 	rm -f ${PROTOC_GEN_GO_VERSION_ZIP}
-	go install github.com/gogo/protobuf/protoc-gen-gofast@latest
-	mv -f ${GOBIN}/protoc-gen-gofast protoc/bin
-	go install github.com/gogo/protobuf/protoc-gen-gogofaster@latest
-	mv -f ${GOBIN}/protoc-gen-gogofaster protoc/bin
 
 .PHONY: proto protoc
