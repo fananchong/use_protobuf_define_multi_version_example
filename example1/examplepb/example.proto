@@ -1,7 +1,7 @@
 syntax = "proto3";
 package examplepb;
 option go_package = "examplepb/";
-import "proto/version.proto";
+import "github.com/use_protobuf_define_multi_version_example/versionpb/version.proto";
 
 message Msg1 {
   option (version_msg) = "3.0";

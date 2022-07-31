@@ -10,7 +10,7 @@ proto:
 
 install_protoc:
 	curl -OL https://github.com/protocolbuffers/protobuf/releases/download/v${PROTOC_VERSION}/${PROTOC_ZIP}
-	unzip -f -d protoc ${PROTOC_ZIP}
+	unzip -o -d protoc ${PROTOC_ZIP}
 	rm -f ${PROTOC_ZIP}
 	curl -OL https://github.com/protocolbuffers/protobuf-go/releases/download/v${PROTOC_GEN_GO_VERSION}/${PROTOC_GEN_GO_VERSION_ZIP}
 	tar -zxvf ${PROTOC_GEN_GO_VERSION_ZIP} -C protoc/bin
