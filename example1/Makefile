@@ -6,7 +6,7 @@ PROTOC_GEN_GO_VERSION := 1.28.1
 PROTOC_GEN_GO_VERSION_ZIP := protoc-gen-go.v${PROTOC_GEN_GO_VERSION}.linux.amd64.tar.gz
 
 proto:
-	protoc -I=. --go_out=. versionpb/*.proto
+	protoc -I=. -I=./protoc/include --go_out=. versionpb/*.proto
 
 install_protoc:
 	curl -OL https://github.com/protocolbuffers/protobuf/releases/download/v${PROTOC_VERSION}/${PROTOC_ZIP}

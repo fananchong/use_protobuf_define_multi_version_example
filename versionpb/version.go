@@ -1,4 +1,4 @@
-package useprotobufdefinemultiversionexample
+package versionpb
 
 import (
 	"fmt"
@@ -24,10 +24,12 @@ func MinimalVersion(msg proto.Message) *semver.Version {
 
 type Visitor func(path protoreflect.FullName, ver *semver.Version) error
 
+// VisitMsg 根据消息，获取消息的版本
 func VisitMsg(msg proto.Message, visitor Visitor) error {
 	return visitMessage(msg.ProtoReflect(), visitor)
 }
 
+// VisitFileDescriptor 根据 proto 文件描述，获取消息的版本
 func VisitFileDescriptor(file protoreflect.FileDescriptor, visitor Visitor) error {
 	msgs := file.Messages()
 	for i := 0; i < msgs.Len(); i++ {
