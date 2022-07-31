@@ -3,7 +3,7 @@ module example1
 go 1.17
 
 require (
-	github.com/fananchong/versionpb v0.0.1
+	github.com/fananchong/versionpb v0.0.3
 	google.golang.org/protobuf v1.28.1
 )
 
