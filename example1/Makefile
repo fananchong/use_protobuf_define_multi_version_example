@@ -8,6 +8,8 @@ PROTOC_GEN_GO_VERSION_ZIP := protoc-gen-go.v${PROTOC_GEN_GO_VERSION}.linux.amd64
 proto:
 	go mod vendor
 	protoc -I=. -I=./vendor --go_out=. examplepb/*.proto
+	sed -i 's/_ "."//g' ./examplepb/*.pb.go
+	go fmt ./examplepb/*.pb.go
 
 install_protoc:
 	curl -OL https://github.com/protocolbuffers/protobuf/releases/download/v${PROTOC_VERSION}/${PROTOC_ZIP}

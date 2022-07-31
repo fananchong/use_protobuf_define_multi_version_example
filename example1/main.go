@@ -9,5 +9,5 @@ import (
 
 func main() {
 	msg := &examplepb.Msg1{}
-	fmt.Printf("%#v", versionpb.MinimalVersion(msg))
+	fmt.Printf("%v\n", versionpb.MinimalVersion(msg))
 }
