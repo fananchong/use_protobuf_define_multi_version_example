@@ -16,3 +16,5 @@
 
 protoc/*
 .vscode
+vendor
+example1
